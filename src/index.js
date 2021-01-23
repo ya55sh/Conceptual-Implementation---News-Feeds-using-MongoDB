@@ -8,7 +8,7 @@ const onePageArticleCount = 10
 // Parse JSON bodies (as sent by API clients)
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use("/topRankings",Route);
+app.use("/newFeeds",Route);
 
 
 app.listen(port, () => console.log(`App listening on port ${port}!`))
