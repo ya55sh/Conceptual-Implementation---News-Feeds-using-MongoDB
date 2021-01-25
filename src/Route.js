@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
         }
         else{
            // console.log(result);
-            res.send(result);
+            res.status(200).send(result);
         }
 
     })
