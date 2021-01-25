@@ -6,4 +6,5 @@ const refreshAll = async () => {
     // console.log(connection)
     await newsArticleModel.insertMany(data)
 }
+
 refreshAll()
