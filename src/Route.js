@@ -6,7 +6,7 @@ const url= require("url");
 const newsArticleModel=require('./connector').newsArticleModel;
 
 /* GET home page. */
-router.get('/', async function(req, res, next) {
+router.get('/', function(req, res, next) {
     let parsedUrl = url.parse(req.url);
     let parsedQs = querystring.parse(parsedUrl.query);
     
@@ -18,20 +18,18 @@ router.get('/', async function(req, res, next) {
     }
     // console.log("request is here");
     // console.log(req.url);
-    // await newsArticleModel.find().limit(Number(parsedQs.limit)).skip(Number(parsedQs.offset)).exec(function (err, result) {            
-    //     if (err) {
-    //        // console.log(err);
-    //         res.send([]);
-    //     }
-    //     else{
-    //        // console.log(result);
-    //         res.status(200).send(result);
-    //     }
+    newsArticleModel.find().limit(Number(parsedQs.limit)).skip(Number(parsedQs.offset)).exec(function (err, result) {            
+        if (err) {
+           // console.log(err);
+            res.send([]);
+        } 
+        else{
+           // console.log(result);
+            res.status(200).send(result);
+        }
 
-    // })
-    const data = await newsArticleModel.find().limit(Number(parsedQs.limit)).skip(Number(parsedQs.offset));
-    res.status(200).send(data);
-
+    })
+ 
 });
 
 module.exports = router;
