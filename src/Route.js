@@ -18,17 +18,19 @@ router.get('/', async function(req, res, next) {
     }
     // console.log("request is here");
     // console.log(req.url);
-    await newsArticleModel.find().limit(Number(parsedQs.limit)).skip(Number(parsedQs.offset)).exec(function (err, result) {            
-        if (err) {
-           // console.log(err);
-            res.send([]);
-        }
-        else{
-           // console.log(result);
-            res.status(200).send(result);
-        }
+    // await newsArticleModel.find().limit(Number(parsedQs.limit)).skip(Number(parsedQs.offset)).exec(function (err, result) {            
+    //     if (err) {
+    //        // console.log(err);
+    //         res.send([]);
+    //     }
+    //     else{
+    //        // console.log(result);
+    //         res.status(200).send(result);
+    //     }
 
-    })
+    // })
+    const data = await newsArticleModel.find().limit(Number(parsedQs.limit)).skip(Number(parsedQs.offset));
+    res.status(200).send(data);
 
 });
 
